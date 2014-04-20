@@ -105,4 +105,13 @@ describe User do
 
   end
 
+  describe "change name" do
+    let(:new_name) {'new user name'}
+    it "should be successful" do
+      @user.name = new_name
+      @user.save
+      expect(@user.reload.name).to eq new_name
+    end
+  end
+
 end
