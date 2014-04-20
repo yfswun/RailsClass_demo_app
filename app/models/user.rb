@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
-  before_save { self.email = email.downcase }
+  # before_save { self.email = email.downcase }
+  before_save { email.downcase! }
 
   has_many :microposts
 
@@ -8,7 +9,7 @@ class User < ActiveRecord::Base
   validates_length_of :name, maximum: 50
 
   validates_presence_of :email
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
 
