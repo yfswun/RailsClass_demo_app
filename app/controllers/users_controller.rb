@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     # respond_to do |format|
       if @user.save
-        flash[:success] = "Welcome to the Sample App!"
+        flash[:success] = "Welcome to the Demo App!"
         redirect_to @user
         # format.html { redirect_to @user, notice: 'User was successfully created.' }
         # format.json { render action: 'show', status: :created, location: @user }
